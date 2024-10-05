@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bo8ewskgweq4a" path="res://assets/art/textboxrect.png" id="1_ybvxc"]
 [ext_resource type="Theme" uid="uid://bsw5b77xwokkq" path="res://ui_theme.tres" id="2_2daca"]
 
-[node name="TextRenderer" type="CanvasLayer" node_paths=PackedStringArray("text_label")]
+[node name="TextRenderer" type="CanvasLayer" node_paths=PackedStringArray("text_label", "text_container")]
 script = ExtResource("1_k3rxi")
 text_label = NodePath("MarginContainer/MarginContainer/RichTextLabel")
+text_container = NodePath("MarginContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 7
@@ -20,7 +21,6 @@ offset_right = 83.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 theme_override_constants/margin_bottom = 8
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
@@ -45,6 +45,5 @@ layout_mode = 2
 theme = ExtResource("2_2daca")
 theme_override_colors/default_color = Color(0.14902, 0.0509804, 0.203922, 1)
 bbcode_enabled = true
-text = "[center]One day I woke up and you had [wave]changed....[/wave][/center]"
 fit_content = true
 autowrap_mode = 0
