@@ -113,7 +113,7 @@ tracks/4/path = NodePath("TextRenderer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.266667),
+"times": PackedFloat32Array(0.333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],

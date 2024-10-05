@@ -14,6 +14,7 @@ var active_animation: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     super()
+    start()
     id = Globals.Sequences.INTRO
 
 func start():

@@ -30,7 +30,7 @@ func _start_sequence(sequence_scene: PackedScene):
     current_sequence = sequence_scene.instantiate()
     add_child(current_sequence)
     current_sequence.finished.connect(_handle_sequence_finished)
-    current_sequence.start()
+    #current_sequence.start()
 
 func _handle_sequence_finished():
     print("sequence done")
