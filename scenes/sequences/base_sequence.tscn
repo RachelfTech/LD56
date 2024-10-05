@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://5yuxmpd4pcjo"]
+
+[ext_resource type="Script" path="res://scenes/sequences/base_sequence.gd" id="1_ujvf8"]
+[ext_resource type="PackedScene" uid="uid://b8o4pk44fpdkr" path="res://scenes/text_renderer.tscn" id="2_cgry5"]
+
+[node name="BaseSequence" type="Node"]
+script = ExtResource("1_ujvf8")
+
+[node name="TextRenderer" parent="." instance=ExtResource("2_cgry5")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

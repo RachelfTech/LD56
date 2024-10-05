@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm8lx4gh838o7"]
+
+[ext_resource type="PackedScene" uid="uid://b8o4pk44fpdkr" path="res://scenes/text_renderer.tscn" id="2_jeasr"]
+
+[sub_resource type="GDScript" id="GDScript_iygmy"]
+script/source = "extends Sequence
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+    super()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+    pass
+
+func _input(_event: InputEvent) -> void:
+    pass
+
+func start():
+    pass
+
+func _handle_animation_finished(_animation_name: String):
+    pass
+
+func _handle_line_rendered():
+    pass
+"
+
+[node name="BaseSequence" type="Node"]
+script = SubResource("GDScript_iygmy")
+
+[node name="TextRenderer" parent="." instance=ExtResource("2_jeasr")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

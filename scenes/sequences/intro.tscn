@@ -127,10 +127,11 @@ _data = {
 "opening": SubResource("Animation_xvj5y")
 }
 
-[node name="Intro" type="Node" node_paths=PackedStringArray("animation_player", "text_renderer")]
+[node name="Intro" type="Node" node_paths=PackedStringArray("animation_player", "text_renderer", "camera")]
 script = ExtResource("1_3je0g")
 animation_player = NodePath("AnimationPlayer")
 text_renderer = NodePath("TextRenderer")
+camera = NodePath("Camera2D")
 
 [node name="TextRenderer" parent="." instance=ExtResource("2_kebdx")]
 

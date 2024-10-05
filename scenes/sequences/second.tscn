@@ -77,10 +77,10 @@ _data = {
 "start": SubResource("Animation_h82f5")
 }
 
-[node name="Second" type="Node" node_paths=PackedStringArray("text_renderer", "animation_player")]
+[node name="Second" type="Node" node_paths=PackedStringArray("animation_player", "text_renderer")]
 script = ExtResource("1_wt5ya")
-text_renderer = NodePath("TextRenderer")
 animation_player = NodePath("AnimationPlayer")
+text_renderer = NodePath("TextRenderer")
 
 [node name="SecondSequence" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
