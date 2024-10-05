@@ -5,6 +5,8 @@ var sequence_text: Array[String] = ["Click to begin"]
 
 @export var play_sprite: Sprite2D
 
+var text_finished: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     super()
@@ -16,7 +18,7 @@ func _process(delta: float) -> void:
     pass
 
 func _input(_event: InputEvent) -> void:
-    if Input.is_action_just_pressed("left-click"):
+    if text_finished and Input.is_action_just_pressed("left-click"):
         end()
 
 func start():
@@ -30,6 +32,9 @@ func _handle_animation_finished(_animation_name: String):
 
 func _handle_line_rendered():
     text_renderer.animate_ready()
+
+func _handle_all_text_rendered():
+    text_finished = true
 
 func _animate_sprite():
     var tween: Tween = self.create_tween().set_loops()

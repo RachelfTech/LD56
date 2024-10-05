@@ -17,6 +17,9 @@ var silent: bool = false
 signal line_rendered
 signal all_text_rendered
 
+const BASE_TEXT_SPEED: float = 1.5
+const AVERAGE_NUM_CHARS: float = 30.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     text_container.modulate = Color.TRANSPARENT
@@ -58,7 +61,10 @@ func _animate_in():
     var tween: Tween = get_tree().create_tween()
     tween.tween_property(text_container, "modulate", Color.WHITE, 1.5).set_trans(Tween.TRANS_SINE)
     tween.set_parallel()
-    tween.tween_property(text_label, "visible_ratio", 1, 2).set_trans(Tween.TRANS_LINEAR)
+    var num_chars: int = text_label.get_total_character_count()
+    var tween_time: float = (num_chars / AVERAGE_NUM_CHARS) * BASE_TEXT_SPEED
+    print(tween_time)
+    tween.tween_property(text_label, "visible_ratio", 1, tween_time).set_trans(Tween.TRANS_LINEAR)
 
     await tween.finished
     line_rendered.emit()

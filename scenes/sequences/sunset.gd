@@ -1,8 +1,10 @@
 extends Sequence
 
 var sequence_text: Array[String] = [
-    "Maybe the real question was never [wave]\"would you still love me?\"[/wave]",
-    "It was [wave]\"How would your love evolve?\"[/wave]"]
+    "And strangely, I found myself happy for you.",
+    "Proud you'd fully embraced your new form.",
+    "In the end, maybe the real question was never [wave]\"would you still love me?\"[/wave]",
+    "But instead, [wave]\"How would your love evolve?\"[/wave]"]
 
 var allow_advance: bool = false
 
