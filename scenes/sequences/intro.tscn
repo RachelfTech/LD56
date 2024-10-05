@@ -57,7 +57,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_xvj5y"]
 resource_name = "opening"
-length = 7.33334
+length = 6.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

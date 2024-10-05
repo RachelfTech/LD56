@@ -12,6 +12,8 @@ var current_text_index: int = 0
 
 var ready_animate_tween: Tween
 
+var silent: bool = false
+
 signal line_rendered
 
 # Called when the node enters the scene tree for the first time.
@@ -29,7 +31,7 @@ func set_sequence_text(sequence_text: Array[String]):
 
 func play_text():
     current_text = current_text_list[current_text_index]
-    animate_in()
+    _animate_in()
 
 func advance_text() -> bool:
     if ready_animate_tween:
@@ -42,13 +44,14 @@ func advance_text() -> bool:
         return true
     text_label.visible_ratio = 0.0
     current_text = current_text_list[current_text_index]
-    animate_in()
+    _animate_in()
     return false
 
-func animate_in():
+func _animate_in():
     text_label.text = current_text
 
-    audio_player.play()
+    if not silent:
+        audio_player.play()
 
     text_container.modulate = Color.TRANSPARENT
     var tween: Tween = get_tree().create_tween()
@@ -61,7 +64,7 @@ func animate_in():
 
 func animate_ready():
     print("ready")
-    ready_animate_tween = get_tree().create_tween().set_loops()
+    ready_animate_tween = self.create_tween().set_loops()
     ready_animate_tween.tween_interval(1)
     ready_animate_tween.tween_property(text_container, "modulate:a", .75, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
     ready_animate_tween.tween_interval(0)
