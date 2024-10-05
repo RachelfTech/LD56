@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8o4pk44fpdkr"]
+
+[ext_resource type="Script" path="res://scripts/text_renderer.gd" id="1_k3rxi"]
+[ext_resource type="Texture2D" uid="uid://bo8ewskgweq4a" path="res://assets/art/textboxrect.png" id="1_ybvxc"]
+[ext_resource type="Theme" uid="uid://bsw5b77xwokkq" path="res://ui_theme.tres" id="2_2daca"]
+
+[node name="TextRenderer" type="CanvasLayer" node_paths=PackedStringArray("text_label")]
+script = ExtResource("1_k3rxi")
+text_label = NodePath("MarginContainer/MarginContainer/RichTextLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -40.0
+offset_right = 83.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_bottom = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_ybvxc")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_2daca")
+theme_override_colors/default_color = Color(0.14902, 0.0509804, 0.203922, 1)
+bbcode_enabled = true
+text = "[center]One day I woke up and you had [wave]changed....[/wave][/center]"
+fit_content = true
+autowrap_mode = 0
