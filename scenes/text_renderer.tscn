@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8o4pk44fpdkr"]
+[gd_scene load_steps=5 format=3 uid="uid://b8o4pk44fpdkr"]
 
 [ext_resource type="Script" path="res://scripts/text_renderer.gd" id="1_k3rxi"]
 [ext_resource type="Texture2D" uid="uid://bo8ewskgweq4a" path="res://assets/art/textboxrect.png" id="1_ybvxc"]
 [ext_resource type="Theme" uid="uid://bsw5b77xwokkq" path="res://ui_theme.tres" id="2_2daca"]
+[ext_resource type="AudioStream" uid="uid://mh5ab40n3pim" path="res://assets/sound/dialogue.wav" id="4_ks7qu"]
 
-[node name="TextRenderer" type="CanvasLayer" node_paths=PackedStringArray("text_label", "text_container")]
+[node name="TextRenderer" type="CanvasLayer" node_paths=PackedStringArray("text_label", "text_container", "audio_player")]
 script = ExtResource("1_k3rxi")
 text_label = NodePath("MarginContainer/MarginContainer/RichTextLabel")
 text_container = NodePath("MarginContainer")
+audio_player = NodePath("AudioStreamPlayer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 7
@@ -47,3 +49,8 @@ theme_override_colors/default_color = Color(0.14902, 0.0509804, 0.203922, 1)
 bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ks7qu")
+volume_db = -4.707
+pitch_scale = 0.58
