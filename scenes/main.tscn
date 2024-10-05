@@ -117,7 +117,7 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"animate_in"
+"method": &"play_text"
 }]
 }
 
@@ -127,21 +127,12 @@ _data = {
 "opening": SubResource("Animation_xvj5y")
 }
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("text_renderer", "animation_player")]
 script = ExtResource("1_gp8ab")
+text_renderer = NodePath("TextRenderer")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="TextRenderer" parent="." instance=ExtResource("3_64qr5")]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 640.0
-offset_bottom = 360.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.180392, 0.133333, 0.184314, 1)
 
 [node name="WormRoom" type="Sprite2D" parent="."]
 visible = false
@@ -154,7 +145,6 @@ texture = ExtResource("3_galua")
 libraries = {
 "": SubResource("AnimationLibrary_q0b2c")
 }
-autoplay = "opening"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 540)
