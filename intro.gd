@@ -20,9 +20,9 @@ func _ready() -> void:
     id = Globals.Sequences.INTRO
 
 func start():
+    active_animation = true
     text_renderer.set_sequence_text(sequence_text)
     animation_player.play("opening")
-    active_animation = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

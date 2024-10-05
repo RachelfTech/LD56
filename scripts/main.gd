@@ -21,7 +21,11 @@ func _start_next_sequence():
         print("finished all sequences")
         return
     var next_sequence: PackedScene = sequences_scenes[current_sequence_index]
+
+    # Disconnect the end signal so it can't fire before the sequence is queue_free'd.
+    current_sequence.finished.disconnect(_handle_sequence_finished)
     current_sequence.queue_free()
+
     _start_sequence(next_sequence)
 
 func _start_sequence(sequence_scene: PackedScene):
@@ -30,7 +34,6 @@ func _start_sequence(sequence_scene: PackedScene):
     current_sequence = sequence_scene.instantiate()
     add_child(current_sequence)
     current_sequence.finished.connect(_handle_sequence_finished)
-    #current_sequence.start()
 
 func _handle_sequence_finished():
     print("sequence done")
