@@ -10,6 +10,8 @@ var current_text: String
 var current_text_list: Array[String] = []
 var current_text_index: int = 0
 
+var ready_animate_tween: Tween
+
 signal line_rendered
 
 # Called when the node enters the scene tree for the first time.
@@ -30,6 +32,10 @@ func play_text():
     animate_in()
 
 func advance_text() -> bool:
+    if ready_animate_tween:
+        ready_animate_tween.kill()
+    print(ready_animate_tween.is_running())
+    print("here")
     current_text_index += 1
     if current_text_list.size() <= current_text_index:
         print("done")
@@ -52,3 +58,11 @@ func animate_in():
 
     await tween.finished
     line_rendered.emit()
+
+func animate_ready():
+    print("ready")
+    ready_animate_tween = get_tree().create_tween().set_loops()
+    ready_animate_tween.tween_interval(1)
+    ready_animate_tween.tween_property(text_container, "modulate:a", .75, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+    ready_animate_tween.tween_interval(0)
+    ready_animate_tween.tween_property(text_container, "modulate:a", 1, .8).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)

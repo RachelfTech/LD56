@@ -1,7 +1,7 @@
 extends Sequence
 
-var sequence_text: Array[String] = ["But I wanted to make things work...",
-            "So I did everything I could"]
+var sequence_text: Array[String] = ["But I wanted to make things work.",
+            "So I did everything I could..."]
 
 
 var allow_advance: bool = false
@@ -15,6 +15,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     pass
+   # if allow_advance:
+      #  text_renderer.animate_ready()
 
 func start():
     text_renderer.set_sequence_text(sequence_text)
@@ -25,8 +27,9 @@ func _input(_event: InputEvent) -> void:
             allow_advance = false
             var text_finished: bool = text_renderer.advance_text()
             if text_finished:
-                finished.emit()
+                end()
 
 
 func _handle_line_rendered():
     allow_advance = true
+    text_renderer.animate_ready()

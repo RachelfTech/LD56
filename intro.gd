@@ -5,10 +5,12 @@ var sequence_text: Array[String] = [
     "I still can't believe it actually happened."]
 
 
-var allow_advance: bool = false
+var allow_text_advance: bool = false
 var animation_finished: bool = false
 
 var active_animation: bool = false
+
+var allow_advance: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,18 +26,28 @@ func start():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-    pass
+    _update_ready_to_advance()
 
 func _input(_event: InputEvent) -> void:
-    if not active_animation and allow_advance and Input.is_action_just_pressed("left-click"):
+    if allow_advance and Input.is_action_just_pressed("left-click"):
         var text_finished: bool = text_renderer.advance_text()
         if text_finished:
-            finished.emit()
+            end()
         else:
-            allow_advance = false
+            print("allow advance false")
+            allow_text_advance = false
 
 func _handle_animation_finished(_animation_name: String):
     active_animation = false
 
 func _handle_line_rendered():
-    allow_advance = true
+    print("line done")
+    allow_text_advance = true
+
+func _update_ready_to_advance():
+    var last_ready_to_advance = allow_advance
+
+    allow_advance = allow_text_advance and not active_animation
+
+    if last_ready_to_advance != allow_advance and allow_advance:
+        text_renderer.animate_ready()
