@@ -1,7 +1,7 @@
 extends Sequence
 
 
-var sequence_text: Array[String] = ["[center]Click to continue[/center]"]
+var sequence_text: Array[String] = ["Click to begin"]
 
 @export var play_sprite: Sprite2D
 

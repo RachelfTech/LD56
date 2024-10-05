@@ -15,6 +15,7 @@ var ready_animate_tween: Tween
 var silent: bool = false
 
 signal line_rendered
+signal all_text_rendered
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,7 +49,7 @@ func advance_text() -> bool:
     return false
 
 func _animate_in():
-    text_label.text = current_text
+    text_label.text = "[center]" + current_text + "[/center]"
 
     if not silent:
         audio_player.play()
@@ -62,10 +63,13 @@ func _animate_in():
     await tween.finished
     line_rendered.emit()
 
+    if current_text_index == current_text_list.size() - 1:
+        all_text_rendered.emit()
+
 func animate_ready():
     print("ready")
     ready_animate_tween = self.create_tween().set_loops()
-    ready_animate_tween.tween_interval(1)
+    ready_animate_tween.tween_interval(1.5)
     ready_animate_tween.tween_property(text_container, "modulate:a", .75, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
     ready_animate_tween.tween_interval(0)
     ready_animate_tween.tween_property(text_container, "modulate:a", 1, .8).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)

@@ -1,7 +1,7 @@
 extends Sequence
 
 var sequence_text: Array[String] = [
-    "[center]I woke up one morning and you had [wave]changed....[/wave][/center]",
+    "I woke up one morning and you had [wave]changed....[/wave]",
     "I still can't believe it actually happened."]
 
 
