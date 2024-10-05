@@ -3,8 +3,11 @@
 [ext_resource type="Script" path="res://scenes/sequences/base_sequence.gd" id="1_ujvf8"]
 [ext_resource type="PackedScene" uid="uid://b8o4pk44fpdkr" path="res://scenes/text_renderer.tscn" id="2_cgry5"]
 
-[node name="BaseSequence" type="Node"]
+[node name="BaseSequence" type="Node" node_paths=PackedStringArray("animation_player", "text_renderer", "camera")]
 script = ExtResource("1_ujvf8")
+animation_player = NodePath("AnimationPlayer")
+text_renderer = NodePath("TextRenderer")
+camera = NodePath("Camera2D")
 
 [node name="TextRenderer" parent="." instance=ExtResource("2_cgry5")]
 

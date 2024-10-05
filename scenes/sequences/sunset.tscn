@@ -4,22 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://b8o4pk44fpdkr" path="res://scenes/text_renderer.tscn" id="2_l82vn"]
 [ext_resource type="Texture2D" uid="uid://40iigwpaay1x" path="res://assets/art/sunset.png" id="3_l4kww"]
 
-[sub_resource type="Animation" id="Animation_eokru"]
-resource_name = "play"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.333333, 2.33333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_v8aeg"]
 length = 0.001
 tracks/0/type = "value"
@@ -33,6 +17,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eokru"]
+resource_name = "play"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.166667, 3.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k3msu"]
