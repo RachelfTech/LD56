@@ -74,6 +74,10 @@ func hide_text():
     var tween: Tween = self.create_tween()
     tween.tween_property(text_container, "modulate:a", 0, .5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 
+func stop_animate_ready():
+    if ready_animate_tween:
+        ready_animate_tween.kill()
+
 func animate_ready():
     ready_animate_tween = self.create_tween().set_loops()
     ready_animate_tween.tween_interval(1.5)

@@ -70,7 +70,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_eokru"]
 resource_name = "play"
-length = 10.0
+length = 7.66667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
