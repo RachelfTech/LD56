@@ -80,6 +80,6 @@ func _handle_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: in
         print(scroll_velocity.y)
         var new_position_y: float = photo_position_marker.position.y + (scroll_velocity.y * .02)
 
-        photo_position_marker.position.y = clampf(new_position_y, -300, 0)
+        photo_position_marker.position.y = clampf(new_position_y, -650, 0)
     elif not Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
         scrolling = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bs7vu8thhuj6l"]
+[gd_scene load_steps=21 format=3 uid="uid://bs7vu8thhuj6l"]
 
 [ext_resource type="Script" path="res://scenes/sequences/insta_sequence.gd" id="1_1ny7r"]
 [ext_resource type="PackedScene" uid="uid://b8o4pk44fpdkr" path="res://scenes/text_renderer.tscn" id="2_qexjf"]
@@ -7,10 +7,14 @@
 [ext_resource type="Script" path="res://scenes/sequences/photo_feed.gd" id="4_xnijs"]
 [ext_resource type="Texture2D" uid="uid://dcrxlkmkkmm0e" path="res://assets/art/insta/wormphoto2.png" id="5_md17x"]
 [ext_resource type="Texture2D" uid="uid://bsoyll26nnn6n" path="res://assets/art/insta/phoneframe.png" id="6_b0ssj"]
+[ext_resource type="Texture2D" uid="uid://cvsm85o8ho4d3" path="res://assets/art/insta/wormphoto3.png" id="7_cnssk"]
+[ext_resource type="Texture2D" uid="uid://bnwfy25rpbyst" path="res://assets/art/insta/wormphoto5.png" id="8_t1hki"]
+[ext_resource type="Texture2D" uid="uid://raep218ns0ck" path="res://assets/art/insta/wormphoto4.png" id="9_uopla"]
+[ext_resource type="Texture2D" uid="uid://d0k52p1e52t6c" path="res://assets/art/insta/scrollindicator.png" id="11_4710w"]
 
 [sub_resource type="Animation" id="Animation_w3oaw"]
 resource_name = "play"
-length = 2.33334
+length = 13.3333
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -49,6 +53,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0.77, 0.77), Vector2(0.9, 0.9)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.06667, 5.16667, 13.2333),
+"transitions": PackedFloat32Array(1, 2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.724), Color(1, 1, 1, 0.243137)]
+}
 
 [sub_resource type="Animation" id="Animation_hceym"]
 length = 0.001
@@ -76,6 +92,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0.77, 0.77)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.724)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_geu5d"]
 _data = {
@@ -85,6 +113,42 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_humsw"]
 size = Vector2(298, 318)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lhum"]
+atlas = ExtResource("11_4710w")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yetwt"]
+atlas = ExtResource("11_4710w")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2obg"]
+atlas = ExtResource("11_4710w")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8kji"]
+atlas = ExtResource("11_4710w")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mo21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lhum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yetwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2obg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8kji")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="InstaSequence" type="Node" node_paths=PackedStringArray("scroll_area", "photo_position_marker", "animation_player", "text_renderer", "camera")]
 script = ExtResource("1_1ny7r")
@@ -124,6 +188,15 @@ texture = ExtResource("5_md17x")
 
 [node name="Wormphoto3" parent="Node2D/Phonescreen/PhotoFeed" instance=ExtResource("4_ec4o7")]
 position = Vector2(-3, 289)
+texture = ExtResource("7_cnssk")
+
+[node name="Wormphoto4" parent="Node2D/Phonescreen/PhotoFeed" instance=ExtResource("4_ec4o7")]
+position = Vector2(-3, 459)
+texture = ExtResource("8_t1hki")
+
+[node name="Wormphoto5" parent="Node2D/Phonescreen/PhotoFeed" instance=ExtResource("4_ec4o7")]
+position = Vector2(-3, 629)
+texture = ExtResource("9_uopla")
 
 [node name="Phoneframe" type="Sprite2D" parent="Node2D"]
 texture = ExtResource("6_b0ssj")
@@ -133,3 +206,10 @@ texture = ExtResource("6_b0ssj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScrollArea"]
 position = Vector2(321, 164)
 shape = SubResource("RectangleShape2D_humsw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.724)
+position = Vector2(321, 282)
+sprite_frames = SubResource("SpriteFrames_6mo21")
+autoplay = "default"
+frame_progress = 0.0118629
