@@ -32,8 +32,10 @@ func _process(delta: float) -> void:
 
 func set_sequence_text(sequence_text: Array[String]):
     current_text_list = sequence_text
+    current_text_index = 0
 
 func play_text():
+    current_text_index = 0
     current_text = current_text_list[current_text_index]
     _animate_in()
 
@@ -67,6 +69,10 @@ func _animate_in():
 
     if current_text_index == current_text_list.size() - 1:
         all_text_rendered.emit()
+
+func hide_text():
+    var tween: Tween = self.create_tween()
+    tween.tween_property(text_container, "modulate:a", 0, .5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 
 func animate_ready():
     ready_animate_tween = self.create_tween().set_loops()

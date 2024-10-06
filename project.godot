@@ -28,6 +28,10 @@ window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/dpi/allow_hidpi=false
 
+[global_group]
+
+dirt=""
+
 [input]
 
 left-click={

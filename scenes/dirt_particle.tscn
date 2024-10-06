@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c32xu8ds385q6"]
+
+[ext_resource type="Script" path="res://scenes/dirt_particle.gd" id="1_m3qcn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vad5i"]
+radius = 18.1108
+
+[node name="DirtParticle" type="RigidBody2D" groups=["dirt"]]
+script = ExtResource("1_m3qcn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 38.0
+offset_bottom = 39.0
+color = Color(0.54, 0.297, 0.297, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19, 20)
+shape = SubResource("CircleShape2D_vad5i")
