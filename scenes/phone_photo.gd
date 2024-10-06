@@ -21,8 +21,15 @@ func _ready() -> void:
     insta_sequence = get_owner()
 
 func _handle_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
-    if not already_liked and not insta_sequence.scrolling and insta_sequence.game_running and Input.is_action_just_pressed("left-click"):
-        print("not scrolling here")
+    if already_liked or insta_sequence.scrolling or not insta_sequence.game_running:
+        return
+
+    if event is InputEventMouseMotion:
+        return
+
+    print(Input.get_last_mouse_velocity())
+
+    if Input.is_action_just_released("left-click"):
         var tween: Tween = self.create_tween().set_loops()
         heart.visible = true
         grey_heart.visible = false
@@ -38,9 +45,13 @@ func _handle_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: in
         liked.emit()
 
 func _handle_heart_area_mouse_entered():
+    if not insta_sequence.game_running:
+        return
     var tween: Tween = self.create_tween()
     tween.tween_property(grey_heart, "scale", Vector2(1, 1), .5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 
 func _handle_heart_area_mouse_exited():
+    if not insta_sequence.game_running:
+        return
     var tween: Tween = self.create_tween()
     tween.tween_property(grey_heart, "scale", Vector2(.5, .5), .5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
