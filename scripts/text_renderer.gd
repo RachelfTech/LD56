@@ -40,11 +40,8 @@ func play_text():
 func advance_text() -> bool:
     if ready_animate_tween:
         ready_animate_tween.kill()
-    print(ready_animate_tween.is_running())
-    print("here")
     current_text_index += 1
     if current_text_list.size() <= current_text_index:
-        print("done")
         return true
     text_label.visible_ratio = 0.0
     current_text = current_text_list[current_text_index]
@@ -63,7 +60,6 @@ func _animate_in():
     tween.set_parallel()
     var num_chars: int = text_label.get_total_character_count()
     var tween_time: float = (num_chars / AVERAGE_NUM_CHARS) * BASE_TEXT_SPEED
-    print(tween_time)
     tween.tween_property(text_label, "visible_ratio", 1, tween_time).set_trans(Tween.TRANS_LINEAR)
 
     await tween.finished
@@ -73,7 +69,6 @@ func _animate_in():
         all_text_rendered.emit()
 
 func animate_ready():
-    print("ready")
     ready_animate_tween = self.create_tween().set_loops()
     ready_animate_tween.tween_interval(1.5)
     ready_animate_tween.tween_property(text_container, "modulate:a", .75, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)

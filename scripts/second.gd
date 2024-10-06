@@ -1,6 +1,6 @@
 extends Sequence
 
-var sequence_text: Array[String] = ["But I wanted to make things work.",
+var sequence_text: Array[String] = ["I wanted to make things work.",
             "So I did everything I could..."]
 
 

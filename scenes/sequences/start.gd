@@ -27,7 +27,6 @@ func start():
 
 
 func _handle_animation_finished(_animation_name: String):
-    print("done")
     _animate_sprite()
 
 func _handle_line_rendered():

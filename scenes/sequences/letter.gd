@@ -1,7 +1,7 @@
 extends Sequence
 
 
-var sequence_text: Array[String] = ["And one morning I woke up...",
+var sequence_text: Array[String] = ["But, one morning I woke up...",
             "and you were gone."]
 
 var allow_advance: bool = false
@@ -13,12 +13,8 @@ func _ready() -> void:
     super()
     start()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-    _update_ready_to_advance()
-
 func _input(_event: InputEvent) -> void:
+    _update_ready_to_advance()
     if allow_advance and Input.is_action_just_pressed("left-click"):
         var text_finished: bool = text_renderer.advance_text()
         if text_finished:
