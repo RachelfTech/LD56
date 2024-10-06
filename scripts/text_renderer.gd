@@ -56,7 +56,7 @@ func _animate_in():
 
     text_container.modulate = Color.TRANSPARENT
     var tween: Tween = get_tree().create_tween()
-    tween.tween_property(text_container, "modulate", Color.WHITE, 1.5).set_trans(Tween.TRANS_SINE)
+    tween.tween_property(text_container, "modulate", Color.WHITE, 1).set_trans(Tween.TRANS_SINE)
     tween.set_parallel()
     var num_chars: int = text_label.get_total_character_count()
     var tween_time: float = (num_chars / AVERAGE_NUM_CHARS) * BASE_TEXT_SPEED
