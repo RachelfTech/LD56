@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 func _start_next_sequence():
     current_sequence_index += 1
     if current_sequence_index >= sequences_scenes.size():
-        print("finished all sequences")
         end_theme.stop()
         main_theme.play()
         current_sequence_index = 0
@@ -51,7 +50,6 @@ func _start_sequence(sequence_scene: PackedScene):
     current_sequence.finished.connect(_handle_sequence_finished)
 
 func _handle_sequence_finished():
-    print("sequence done")
     sequence_finished = true
     _start_next_sequence()
 

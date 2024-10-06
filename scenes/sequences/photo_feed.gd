@@ -14,5 +14,4 @@ func _process(delta: float) -> void:
     pass
 
 func _handle_photo_liked():
-    print("emit")
     feed_photo_liked.emit()

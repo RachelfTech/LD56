@@ -52,7 +52,6 @@ func start_game():
     await tween.finished
 
     dirt_timer.start()
-    print("start game")
 
 
 func _handle_dirt_timer_timeout():

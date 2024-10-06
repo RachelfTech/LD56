@@ -27,8 +27,6 @@ func _handle_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: in
     if event is InputEventMouseMotion:
         return
 
-    print(Input.get_last_mouse_velocity())
-
     if Input.is_action_just_released("left-click"):
         var tween: Tween = self.create_tween().set_loops()
         heart.visible = true

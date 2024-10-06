@@ -53,7 +53,6 @@ func start():
 
 func start_game():
     game_running = true
-    print("start game")
 
 func _handle_animation_finished(_animation_name: String):
     pass

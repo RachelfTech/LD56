@@ -33,7 +33,6 @@ func _physics_process(delta: float) -> void:
     if not game_running:
         return
     var overlapping_books: Array[Node2D] = brain_area.get_overlapping_bodies()
-    print(overlapping_books.size())
 
     if overlapping_books.size() == num_books:
         finish_game()
@@ -58,7 +57,6 @@ func start_game():
     game_running = true
     books.process_mode = PROCESS_MODE_ALWAYS
     unfreeze_books()
-    print("start game")
 
 func _handle_animation_finished(_animation_name: String):
     pass
