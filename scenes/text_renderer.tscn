@@ -51,5 +51,4 @@ autowrap_mode = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ks7qu")
-volume_db = -4.707
-pitch_scale = 0.58
+volume_db = -14.5
