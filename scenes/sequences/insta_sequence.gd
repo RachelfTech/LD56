@@ -4,7 +4,7 @@ extends Sequence
 @export var scroll_area: Area2D
 @export var photo_position_marker: PhotoFeed
 
-var sequence_text: Array[String] = ["I encouraged you to find new friends with similar experiences."]
+var sequence_text: Array[String] = ["I encouraged you to find new friends and have new experiences."]
 var end_sequence_text: Array[String] = ["I enjoyed seeing you grow!"]
 
 var scrolling: bool = false

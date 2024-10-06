@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://xnvygpnawkcy"]
+
+[ext_resource type="Texture2D" uid="uid://crkqp4o73bwjl" path="res://assets/art/bookscene/book1.png" id="1_m7y8x"]
+[ext_resource type="Script" path="res://scenes/book.gd" id="1_pyksj"]
+[ext_resource type="FontFile" uid="uid://d3smdehswp1qh" path="res://assets/fonts/monogram.ttf" id="2_qvdnr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0am0"]
+size = Vector2(136, 38.5)
+
+[node name="RigidBody2D" type="RigidBody2D" node_paths=PackedStringArray("book_label", "book_sprite", "collision_shape")]
+collision_mask = 3
+input_pickable = true
+continuous_cd = 2
+script = ExtResource("1_pyksj")
+book_title = "Human -> Worm: It happens"
+book_label = NodePath("Label")
+book_texture = ExtResource("1_m7y8x")
+book_sprite = NodePath("Book")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="Book" type="Sprite2D" parent="."]
+position = Vector2(10, 0)
+texture = ExtResource("1_m7y8x")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -67.0
+offset_top = -7.0
+offset_right = 83.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("2_qvdnr")
+theme_override_font_sizes/font_size = 16
+text = "Human -> Worm
+"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, 0.75)
+shape = SubResource("RectangleShape2D_q0am0")

@@ -1,0 +1,219 @@
+[gd_scene load_steps=17 format=3 uid="uid://17obikgmm08"]
+
+[ext_resource type="Script" path="res://scenes/sequences/book_sequence.gd" id="1_io7no"]
+[ext_resource type="PackedScene" uid="uid://b8o4pk44fpdkr" path="res://scenes/text_renderer.tscn" id="2_yqn1q"]
+[ext_resource type="Texture2D" uid="uid://ua5hwab748eq" path="res://assets/art/bookscene/desk.png" id="3_uqtde"]
+[ext_resource type="Texture2D" uid="uid://c6coo4kuhfcrd" path="res://assets/art/bookscene/window.png" id="4_1vs6x"]
+[ext_resource type="PackedScene" uid="uid://xnvygpnawkcy" path="res://scenes/book.tscn" id="5_kess1"]
+[ext_resource type="Texture2D" uid="uid://dq6rga0ipb1j8" path="res://assets/art/bookscene/book2.png" id="6_62gic"]
+[ext_resource type="Texture2D" uid="uid://iafuue6ycn8s" path="res://assets/art/bookscene/book3.png" id="7_euqc7"]
+[ext_resource type="Texture2D" uid="uid://jxrfbyrjal68" path="res://assets/art/bookscene/openbook.png" id="8_tkkkw"]
+[ext_resource type="Texture2D" uid="uid://cfdohcmchplt5" path="res://assets/art/bookscene/brain.png" id="9_odj2e"]
+
+[sub_resource type="Animation" id="Animation_ohs7y"]
+resource_name = "play"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextRenderer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_text"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Books:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 2.53333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Brain:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 2.53333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.76667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"unfreeze_books"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nk02q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Books:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Brain:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aym0q"]
+_data = {
+"RESET": SubResource("Animation_nk02q"),
+"play": SubResource("Animation_ohs7y")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwiy8"]
+size = Vector2(249, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f74gn"]
+size = Vector2(675, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6q0r"]
+size = Vector2(26.5, 395.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tpqor"]
+radius = 129.0
+
+[node name="BookSequence" type="Node" node_paths=PackedStringArray("books", "brain_area", "animation_player", "text_renderer", "camera")]
+script = ExtResource("1_io7no")
+books = NodePath("Books")
+brain_area = NodePath("Brain/Area2D")
+animation_player = NodePath("AnimationPlayer")
+text_renderer = NodePath("TextRenderer")
+camera = NodePath("Camera2D")
+
+[node name="TextRenderer" parent="." instance=ExtResource("2_yqn1q")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aym0q")
+}
+
+[node name="Desk" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(403, 178)
+texture = ExtResource("3_uqtde")
+
+[node name="DeskArea" type="Area2D" parent="Desk"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Desk/DeskArea"]
+position = Vector2(10, -7)
+shape = SubResource("RectangleShape2D_iwiy8")
+
+[node name="Window" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(323, 178)
+texture = ExtResource("4_1vs6x")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(403, 178)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-72, 195)
+shape = SubResource("RectangleShape2D_f74gn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-88, -190)
+shape = SubResource("RectangleShape2D_f74gn")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-417, 7)
+shape = SubResource("RectangleShape2D_c6q0r")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(250, 7)
+shape = SubResource("RectangleShape2D_c6q0r")
+
+[node name="Openbook" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(426, 172)
+texture = ExtResource("8_tkkkw")
+
+[node name="Brain" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(425, 169)
+texture = ExtResource("9_odj2e")
+
+[node name="Area2D" type="Area2D" parent="Brain"]
+gravity_space_override = 3
+gravity = 0.0
+linear_damp_space_override = 2
+linear_damp = 1.2
+angular_damp_space_override = 3
+angular_damp = 1.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brain/Area2D"]
+position = Vector2(0, -30)
+shape = SubResource("CircleShape2D_tpqor")
+
+[node name="Books" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Book" parent="Books" instance=ExtResource("5_kess1")]
+position = Vector2(106, 328)
+book_title = "Human -> Worm"
+
+[node name="Book2" parent="Books" instance=ExtResource("5_kess1")]
+position = Vector2(105, 269)
+book_title = "A Game of Worms"
+book_texture = ExtResource("6_62gic")
+
+[node name="Book3" parent="Books" instance=ExtResource("5_kess1")]
+position = Vector2(106, 217)
+book_title = "Romeo & Wormiet"
+book_texture = ExtResource("7_euqc7")
+
+[node name="Book4" parent="Books" instance=ExtResource("5_kess1")]
+position = Vector2(106, 162)
+book_title = "Worms for Dummies"
+
+[node name="Book5" parent="Books" instance=ExtResource("5_kess1")]
+position = Vector2(106, 81)
+book_title = "Under the Dirt"
+book_texture = ExtResource("6_62gic")
+
+[node name="Book6" parent="Books" instance=ExtResource("5_kess1")]
+position = Vector2(425, 162)
+book_title = "My GF the Worm"
+book_texture = ExtResource("7_euqc7")

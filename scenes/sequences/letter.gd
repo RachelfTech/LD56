@@ -1,7 +1,7 @@
 extends Sequence
 
 
-var sequence_text: Array[String] = ["Then one morning I woke up...",
+var sequence_text: Array[String] = ["I did everything I could.", "But, one morning I woke up...",
             "and you were gone."]
 
 var allow_advance: bool = false
