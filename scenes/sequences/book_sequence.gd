@@ -22,6 +22,7 @@ func _ready() -> void:
         book.deselected.connect(_handle_book_deselected)
 
     num_books = books.get_child_count()
+    books.process_mode = PROCESS_MODE_DISABLED
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,6 +56,8 @@ func start():
 
 func start_game():
     game_running = true
+    books.process_mode = PROCESS_MODE_ALWAYS
+    unfreeze_books()
     print("start game")
 
 func _handle_animation_finished(_animation_name: String):

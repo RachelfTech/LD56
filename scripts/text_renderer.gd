@@ -71,6 +71,8 @@ func _animate_in():
         all_text_rendered.emit()
 
 func hide_text():
+    if ready_animate_tween:
+        ready_animate_tween.kill()
     var tween: Tween = self.create_tween()
     tween.tween_property(text_container, "modulate:a", 0, .5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 

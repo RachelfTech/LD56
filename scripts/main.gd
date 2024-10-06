@@ -19,7 +19,7 @@ func _start_next_sequence():
     current_sequence_index += 1
     if current_sequence_index >= sequences_scenes.size():
         print("finished all sequences")
-        return
+        current_sequence_index = 0
     var next_sequence: PackedScene = sequences_scenes[current_sequence_index]
 
     # Disconnect the end signal so it can't fire before the sequence is queue_free'd.
