@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6i2yd7so0m7l"]
+
+[ext_resource type="Texture2D" uid="uid://b1arr7g645vlp" path="res://assets/art/insta/wormphoto1.png" id="1_tuhpa"]
+[ext_resource type="Script" path="res://scenes/phone_photo.gd" id="2_v6t2h"]
+[ext_resource type="Texture2D" uid="uid://dfa3dbk8nsaxx" path="res://assets/art/smallheart.png" id="3_eoq3x"]
+[ext_resource type="Texture2D" uid="uid://b5uca2xmua55u" path="res://assets/art/smallheartgrey.png" id="4_777nl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo76u"]
+size = Vector2(227, 156)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l07tk"]
+radius = 15.1327
+
+[node name="PhonePhoto" type="Sprite2D" node_paths=PackedStringArray("area_2d", "heart_area", "heart", "grey_heart")]
+position = Vector2(-1, -58)
+texture = ExtResource("1_tuhpa")
+script = ExtResource("2_v6t2h")
+area_2d = NodePath("Area2D")
+heart_area = NodePath("HeartArea")
+heart = NodePath("Smallheart")
+grey_heart = NodePath("SmallheartGrey")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 3)
+shape = SubResource("RectangleShape2D_bo76u")
+
+[node name="Smallheart" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(84, 70)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_eoq3x")
+
+[node name="SmallheartGrey" type="Sprite2D" parent="."]
+position = Vector2(84, 70)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_777nl")
+
+[node name="HeartArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeartArea"]
+position = Vector2(84, 70)
+shape = SubResource("CircleShape2D_l07tk")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bp4jcxyjyk1s3"]
+[gd_scene load_steps=9 format=3 uid="uid://bp4jcxyjyk1s3"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_gp8ab"]
 [ext_resource type="PackedScene" uid="uid://bs0de71r2yt7w" path="res://scenes/sequences/start.tscn" id="2_0pfq4"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ceyoxr6n20680" path="res://scenes/sequences/sunset.tscn" id="5_1yrgj"]
 [ext_resource type="PackedScene" uid="uid://cisrqu2svlxg0" path="res://scenes/sequences/letter.tscn" id="5_bm3f6"]
 [ext_resource type="PackedScene" uid="uid://bn65hloslugti" path="res://scenes/sequences/bed_mini_game.tscn" id="5_uo6bl"]
+[ext_resource type="PackedScene" uid="uid://bs7vu8thhuj6l" path="res://scenes/sequences/insta_sequence.tscn" id="6_f3ibv"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_gp8ab")
-sequences_scenes = Array[PackedScene]([ExtResource("2_0pfq4"), ExtResource("2_4y1aa"), ExtResource("3_ldwvn"), ExtResource("5_uo6bl"), ExtResource("5_bm3f6"), ExtResource("5_1yrgj")])
+sequences_scenes = Array[PackedScene]([ExtResource("2_0pfq4"), ExtResource("2_4y1aa"), ExtResource("3_ldwvn"), ExtResource("5_uo6bl"), ExtResource("6_f3ibv"), ExtResource("5_bm3f6"), ExtResource("5_1yrgj")])

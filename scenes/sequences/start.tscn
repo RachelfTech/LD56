@@ -169,4 +169,4 @@ theme_override_fonts/normal_font = ExtResource("4_3ijoq")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[center][wave freq=2.0]Would you still love me?[/wave][/center]
-[center][font_size=18][shake rate=3.0]...if I was a worm[/shake][/font_size][/center]"
+[center]"
