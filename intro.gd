@@ -40,6 +40,9 @@ func _handle_animation_finished(_animation_name: String):
 func _handle_line_rendered():
     allow_text_advance = true
 
+func _handle_all_text_rendered():
+    text_renderer.animate_ready()
+
 func _update_ready_to_advance():
     var last_ready_to_advance = allow_advance
 
