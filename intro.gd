@@ -4,6 +4,7 @@ var sequence_text: Array[String] = [
     "I woke up one morning and you had [wave]changed....[/wave]",
     "I still can't believe it actually happened.",
     "But it did. This was now our reality."]
+    #"That silly question you so often asked had become our reality."]
 
 var allow_text_advance: bool = false
 var animation_finished: bool = false

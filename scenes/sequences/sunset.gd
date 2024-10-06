@@ -4,7 +4,7 @@ var sequence_text: Array[String] = [
     "Strangely, I found myself [pulse]happy[/pulse] for you.",
     "Proud you'd fully embraced your [rainbow]new form[/rainbow].",
     "In the end, maybe the real question was never [wave]\"would you still love me?\"[/wave]",
-    "But rather, [wave]\"How would your love evolve?\"[/wave]"]
+    "But rather, [wave]\"How would our love evolve?\"[/wave]"]
 
 var allow_advance: bool = false
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ceyoxr6n20680"]
+[gd_scene load_steps=14 format=3 uid="uid://ceyoxr6n20680"]
 
 [ext_resource type="Script" path="res://scenes/sequences/sunset.gd" id="1_32h4v"]
 [ext_resource type="PackedScene" uid="uid://b8o4pk44fpdkr" path="res://scenes/text_renderer.tscn" id="2_l82vn"]
 [ext_resource type="Texture2D" uid="uid://40iigwpaay1x" path="res://assets/art/sunset.png" id="3_l4kww"]
+[ext_resource type="Texture2D" uid="uid://dvi3e14gepihe" path="res://assets/art/finalscreen.png" id="4_orq3m"]
 
 [sub_resource type="Animation" id="Animation_v8aeg"]
 length = 0.001
@@ -18,6 +19,54 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FinalSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FinalSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 180)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 180)]
+}
 
 [sub_resource type="Animation" id="Animation_eokru"]
 resource_name = "play"
@@ -29,10 +78,58 @@ tracks/0/path = NodePath("AnimatedSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.166667, 3.5),
+"times": PackedFloat32Array(0.166667, 3.46667),
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FinalSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.56667, 7.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.66667, 5.5),
+"transitions": PackedFloat32Array(2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.175, 0.175)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FinalSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 180)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.66667, 5.5),
+"transitions": PackedFloat32Array(2, -2, -2),
+"update": 0,
+"values": [Vector2(320, 180), Vector2(320, 180), Vector2(538, 114)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k3msu"]
@@ -63,6 +160,28 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p44fs"]
+atlas = ExtResource("4_orq3m")
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70anc"]
+atlas = ExtResource("4_orq3m")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4nxh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p44fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70anc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [node name="BaseSequence" type="Node" node_paths=PackedStringArray("animation_player", "text_renderer", "camera")]
 script = ExtResource("1_32h4v")
 animation_player = NodePath("AnimationPlayer")
@@ -84,4 +203,11 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(320, 180)
 sprite_frames = SubResource("SpriteFrames_7nsca")
 autoplay = "default"
-frame_progress = 0.756779
+frame_progress = 0.0673951
+
+[node name="FinalSprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 180)
+sprite_frames = SubResource("SpriteFrames_w4nxh")
+autoplay = "default"
+frame_progress = 0.573184
